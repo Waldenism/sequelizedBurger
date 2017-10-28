@@ -17,7 +17,7 @@
 			{{#each burgers}}
 				{{#unless this.devoured}}
 					<div>
-						<button type='submit'>{{this.burger_name}}</button>
+						<button id='devouredBtn' type='submit'>{{this.burger_name}}</button>
 					</div>
 				{{/unless}}
 			{{/each}}
@@ -35,4 +35,5 @@
 		
 	</div>
 </div>
+
 

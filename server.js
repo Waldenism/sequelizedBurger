@@ -7,6 +7,9 @@ var app = express();
 
 app.use(express.static('public'));
 
+var methodOveride = require('method-override');
+app.use(methodOveride('_method'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -19,8 +22,7 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/burgers_controller.js');
 app.use('/', routes);
 
-var methodOveride = require('method-override');
-app.use(methodOveride('_method'));
+
 
 
 
