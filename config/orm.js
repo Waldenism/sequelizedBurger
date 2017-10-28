@@ -1,4 +1,4 @@
-var connection = require('./connectiong.js');
+var connection = require('./connection.js');
 
 var orm = {
 	//select All()

@@ -9,10 +9,10 @@ router.get('/', function(req, res) {
 		var obj = {
 			burgers: data
 		};
-
 		res.render('index', obj);
 	}); 
 }); 
+
 //insertOne
 router.post('/burgers', function(req, res) {
 	burger.insertOne([
@@ -24,11 +24,12 @@ router.post('/burgers', function(req, res) {
 		});
 });
 
+//updateOne
 router.put('/burgers/:id', function(req, res) {
 	var condition = 'id = ' + req.params.id;
 
 	burger.updateOne({
-		devoured:true
+		devoured: true
 	}, condition, function(data) {
 		res.redirect('/');
 	});
