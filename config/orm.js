@@ -50,7 +50,15 @@ var orm = {
 	},
 	//updateOne()
 	updateOne: function(table, value, condition, callback) {
-		var query = "UPDATE " + table + " SET " + value  + " WHERE " + condition;
+		var query = "UPDATE " + table;
+		console.log('query1: ' + query);
+		query += " SET ";
+		query += objToSql(value);
+		query += " WHERE ";
+		query += condition;
+		query += ";";
+
+		console.log('query2: ' + query);
 		connection.query(query, function(err, result) {
 			if (err) throw err;
 			callback(result);

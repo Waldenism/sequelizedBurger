@@ -16,14 +16,19 @@ $('#addBurgerBtn').on('click', function(e) {
 
 });
 
-$('devouredBtn').on('click', function(e){
+$('.devouredBtn').on('click', function(e){
 	e.preventDefault();
 
-	$.ajax("", {
+	var id = $(this).data("id");
 
+	console.log("ID: " + id);
+
+	$.ajax("/burgers/" + id, {
+		type: "PUT",
+		data: { devoured: true },
 	}).then(
 		function() {
-			console.log('devoured burger');
+			console.log('devoured the burger');
 			location.reload();
 		}
 	);
