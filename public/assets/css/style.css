@@ -1,7 +1,12 @@
-/*.devoured {
+
+.devoured {
 	background-color:red;
 }
 
 .fresh {
 	background-color:green;
-}*/
+}
+
+.devo {
+	border-bottom: dashed black 2px;
+}

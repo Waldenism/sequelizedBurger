@@ -1,43 +1,76 @@
-<h1>Eat-Da-Burger</h1>
+<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Eat Da Burger
+      </h1>
+      <p class="subtitle">
+        Add burgers then click to <strong>Devour it!</strong>!
+      </p>
+    </div>
+</section>
 
-<h2> Add a Burger</h2>
-
-<div class='row'>
-	<form>
-		<input type="text" id='name' name="burger_name" placeholder="Bongo Burger">
-		<button type='submit' id='addBurgerBtn'>Add Burger</button>
-	</form>
-</div>
-
-<div id="main">
-
-	<div class="row">
-
-		<div class="column">
-			{{#each burgers}}
-				{{#unless this.devoured}}
-					<div>
-						
-						<button data-id={{this.id}} class='devouredBtn' type='submit'>
-							{{this.burger_name}}
-						</button>
-
-					</div>
-				{{/unless}}
-			{{/each}}
+<!-- <h2> Add a Burger</h2> -->
+<section class='section'>
+		<div >
+			<form>
+				<input type="text" id='name' name="burger_name" placeholder="Bongo Burger">
+				<button type='submit' id='addBurgerBtn'>Add Burger</button>
+			</form>
 		</div>
 
-		<div class="column">
-			{{#each burgers}}
-				{{#if this.devoured}}
-					<div>
-						{{this.burger_name}}
-					</div>
-				{{/if}}
-			{{/each}}			
-		</div>
-		
-	</div>
-</div>
+		<div >
 
+			<div >
+				<br><p class="devo"> Fresh Burgers </p><br>
+
+
+				<div >
+					{{#each burgers}}
+						{{#unless this.devoured}}
+							<div class="fresh">
+								
+								<button data-id={{this.id}} class='devouredBtn' type='submit'>
+									{{this.burger_name}}
+								</button>
+
+							</div>
+						{{/unless}}
+					{{/each}}
+				</div>
+
+				<br><p class="devo">  Devoured Burgers </p><br>
+
+				<div >
+					{{#each burgers}}
+						{{#if this.devoured}}
+							<div class="devoured">
+								{{this.burger_name}}
+							</div>
+						{{/if}}
+					{{/each}}			
+				</div>
+				
+			</div>
+		</div>
+</section>
+
+
+<section>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div>===============================================</div>
+	<div>Better UI/UX and Delete function still to come but time is better spent on Project 2 at this point.</div>
+	<div>===============================================</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+</section>
 

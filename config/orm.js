@@ -25,11 +25,10 @@ function objToSql(ob) {
 
 var orm = {
 	//select All()
-	selectAll: function(tableInput, callback) {
-		var query = 'SELECT * FROM ' + tableInput + ';';
+	selectAll: function(table, callback) {
+		var query = 'SELECT * FROM ' + table + ';';
 		connection.query(query, function(err, result) {
 			if(err) throw err;
-			// console.log(result);
 			callback(result);
 		});
 	},
@@ -49,16 +48,13 @@ var orm = {
 		});
 	},
 	//updateOne()
-	updateOne: function(table, value, condition, callback) {
+	updateOne: function(table, column, condition, callback) {
 		var query = "UPDATE " + table;
-		console.log('query1: ' + query);
 		query += " SET ";
-		query += objToSql(value);
+		query += objToSql(column);
 		query += " WHERE ";
 		query += condition;
-		query += ";";
 
-		console.log('query2: ' + query);
 		connection.query(query, function(err, result) {
 			if (err) throw err;
 			callback(result);

@@ -6,20 +6,18 @@ var burger = require('../models/burger.js');
 //selectAll
 router.get('/', function(req, res) {
 	burger.selectAll(function(data) {
-		var obj = {
-			burgers: data
-		};
-		res.render('index', obj);
+		res.render('index', { burgers: data });
 	}); 
 }); 
 
 //insertOne
 router.post('/burgers', function(req, res) {
 	burger.insertOne(
-		['burger_name' ], 
-		[ req.body.burger_name ], 
+		['burger_name'], 
+		[req.body.burger_name], 
 		function(data) {
 			res.redirect('/');
+			// res.end();
 		});
 });
 
@@ -30,7 +28,8 @@ router.put('/burgers/:id', function(req, res) {
 	burger.updateOne({
 		devoured: true
 	}, condition, function(data) {
-		res.redirect('/');
+		res.end();
+		// res.redirect('/');
 	});
 });
 

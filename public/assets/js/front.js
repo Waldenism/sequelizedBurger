@@ -25,10 +25,10 @@ $('.devouredBtn').on('click', function(e){
 
 	$.ajax("/burgers/" + id, {
 		type: "PUT",
-		data: { devoured: true },
+		data: { devoured: true }
 	}).then(
 		function() {
-			console.log('devoured the burger');
+			console.log("devoured");
 			location.reload();
 		}
 	);
