@@ -28,9 +28,10 @@
 					{{#each burgers}}
 						{{#unless this.devoured}}
 							<div class="fresh">
-								
+
+								{{this.burger_name}}
 								<button data-id={{this.id}} class='devouredBtn' type='submit'>
-									{{this.burger_name}}
+									Devour this burger
 								</button>
 
 							</div>
@@ -44,7 +45,12 @@
 					{{#each burgers}}
 						{{#if this.devoured}}
 							<div class="devoured">
+								
 								{{this.burger_name}}
+								<button data-id={{this.id}} class='destroyBtn' type='submit'>
+									Destroy this burger forever
+								</button>
+								
 							</div>
 						{{/if}}
 					{{/each}}			

@@ -1,36 +1,51 @@
 $('#addBurgerBtn').on('click', function(e) {
 	e.preventDefault();
-
 	var burgerName = $('#name').val().trim();
 
-	$.ajax("/burgers", {
-      type: "POST",
-      data: {burger_name:burgerName}
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-
+	if (burgerName === '') {
+		//err msg
+	} else {
+		addBurger(burgerName);
+		location.reload();
+	}
 });
 
 $('.devouredBtn').on('click', function(e){
 	e.preventDefault();
-
 	var id = $(this).data("id");
 
-	console.log("ID: " + id);
-
-	$.ajax("/burgers/" + id, {
-		type: "PUT",
-		data: { devoured: true }
-	}).then(
-		function() {
-			console.log("devoured");
-			location.reload();
-		}
-	);
-	
+	devourBurger(id);
+	location.reload();
 });
+
+$('.destroyBtn').on('click', function(e) {
+	e.preventDefault();
+	var id = $(this).data('id');
+
+	destroyBurger(id);
+	location.reload();
+});
+
+function addBurger(burg) {
+	$.ajax({
+	  url: '/burgers/make',
+      type: "POST",
+      data: {burger_name:burg}
+    });
+};
+
+function devourBurger(burg) {
+	$.ajax({
+		url: '/burgers/devour',
+		type: "PUT",
+		data: { burger_name: burg }
+	});
+};
+
+function destroyBurger(burg) {
+	$.ajax({
+		url: '/burgers/destroy',
+		type: 'PUT',
+		data: { burger_name: burg }
+	});
+};

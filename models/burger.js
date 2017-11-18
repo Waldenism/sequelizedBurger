@@ -6,16 +6,15 @@ var burger = {
 			callback(res);
 		});
 	},
-	insertOne: function(column, condition, callback) {
-		orm.insertOne('burgers', column, condition, function(res) {
-			callback(res);
-		});
 
+	insertOne: function(burg) {
+		orm.insertOne('burgers', 'burger_name', burg);
 	},
-	updateOne: function(column, condition, callback) {
-		orm.updateOne('burgers', column, condition, function(res) {
-			callback(res);
-		});
+	updateOne: function(id) {
+		orm.updateOne('burgers', 'devoured', 'id', id);
+	},
+	deleteOne: function(id) {
+		orm.deleteOne('burgers', 'id', id);
 	}
 };
 

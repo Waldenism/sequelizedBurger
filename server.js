@@ -1,7 +1,10 @@
+var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var PORT = (process.env.PORT || 3000);
+
+
 var app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -17,11 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-var routes = require('./controllers/burgers_controller.js');
-app.use('/', routes);
+require('./controllers/burgers_controller.js')(app);
+
+// var routes = require('./controllers/burgers_controller.js');
+// app.use('/', routes);
 
 app.listen(PORT, function() {
 	console.log("Listening on PORT: " + PORT);
 });
 
-module.exports = app;
+// module.exports = app;
