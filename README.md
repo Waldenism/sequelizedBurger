@@ -5,3 +5,8 @@
 </p>
 
 [LIVE SITE] (https://floating-tundra-83868.herokuapp.com/burgers)
+
+<br />
+
+http://github.com - automatic!
+[GitHub](http://github.com)
