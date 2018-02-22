@@ -1,82 +1,79 @@
-<section class="section">
-    <div class="container">
-      <h1 class="title">
-        Eat Da Burger
-      </h1>
-      <p class="subtitle">
-        Add burgers then click to <strong>Devour it!</strong>!
-      </p>
-    </div>
-</section>
-
-<!-- <h2> Add a Burger</h2> -->
 <section class='section'>
-		<div >
-			<form>
-				<input type="text" id='name' name="burger_name" placeholder="Bongo Burger">
-				<button type='submit' id='addBurgerBtn'>Add Burger</button>
-			</form>
-		</div>
+	<div class='container'>
 
-		<div >
+		<section class='section'>
+		    <div class='container'>
+		      <h1 class='title'>
+		        BucketList
+		      </h1>
+		      <p class='subtitle'>
+		        Add a goal to complete, then click to <strong>Finish it!</strong>!
+		      </p>
+		    </div>
+		</section>
 
-			<div >
-				<br><p class="devo"> Fresh Burgers </p><br>
+		<section class='section is-dark'>
+			<div class='container is-dark'>
 
-
-				<div >
-					{{#each burgers}}
-						{{#unless this.devoured}}
-							<div class="fresh">
-
-								{{this.burger_name}}
-								<button data-id={{this.id}} class='devouredBtn' type='submit'>
-									Devour this burger
-								</button>
-
-							</div>
-						{{/unless}}
-					{{/each}}
+				<div class='field has-addons'>
+				  <div class='control'>
+				    <input class='input' type='text' id='name' placeholder='Get Rich'>
+				  </div>
+				  <div class='control'>
+				    <button id='addBurgerBtn' type='submit' class='button is-link'>
+				      Add Goal
+				    </button>
+				  </div>
 				</div>
 
-				<br><p class="devo">  Devoured Burgers </p><br>
+				<br /><br />
 
-				<div >
-					{{#each burgers}}
-						{{#if this.devoured}}
-							<div class="devoured">
-								
-								{{this.burger_name}}
-								<button data-id={{this.id}} class='destroyBtn' type='submit'>
-									Destroy this burger forever
-								</button>
-								
+				<div class='columns'>
+
+					<div class='column is-6'>
+						<div class='box'>
+							<div class='box is-dark'>
+								<h3> Still Aspiring </h3>
 							</div>
-						{{/if}}
-					{{/each}}			
+							<div>
+								{{#each burgers}}
+									{{#unless this.devoured}}
+										{{> burgers/burger-block }}
+									{{/unless}}
+								{{/each}}
+							</div>
+						</div>
+					</div>
+
+					<div class='column is-6'>
+						<div class='box'>
+							<div class='box'>
+								<h1>  Achieved </h1>
+							</div>
+							<div class=''>
+								{{#each burgers}}
+									{{#if this.devoured}}
+										<span class='level'>
+											<span class='level-left'>
+												<span class='level-item'>{{this.burger_name}}</span>
+											</span>
+											<span class='level-right'>
+												<button data-id={{this.id}} class='destroyBtn button is-danger' type='submit'>
+													delete goal forever
+												</button>
+											</span>
+										</span>
+									{{/if}}
+								{{/each}}			
+							</div>
+						</div>
+					</div>
+
 				</div>
-				
+
 			</div>
-		</div>
-</section>
+		</section>
 
-
-<section>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div>===============================================</div>
-	<div>Better UI/UX and Delete function still to come but time is better spent on Project 2 at this point.</div>
-	<div>===============================================</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
+	</div>
 </section>
 

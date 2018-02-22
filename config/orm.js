@@ -1,30 +1,23 @@
 var connection = require('./connection.js');
 
-// function printQuestionMarks(num) {
-// 	var arr = [];
-// 	for (var i = 0; i < num; i++) {
-// 		arr.push("?");
-// 	}
-// 	return arr.toString();
-// }
+function printQuestionMarks(num) {
+	var arr = [];
+	for (var i = 0; i < num; i++) {
+		arr.push("?");
+	}
+	return arr.toString();
+}
 
-// function objToSql(ob) {
-// 	var arr = [];
+function objToSql(ob) {
+	var arr = [];
 
-// 	for (var key in ob) {
-// 		var value = ob[key];
-// 		if (Object.hasOwnProperty.call(ob, key)) {
-// 			if(typeof value === 'string' && value.indexOf(" ") >= 0) {
-// 				value = "'" + value + "'";
-// 			}
-// 			arr.push(key + "=" + value);
-// 		}
-// 	}
-// 	return arr.toString();
-// }
+	for (var key in ob) {
+		arr.push(key + '=' + ob[key]);
+	}
+	return arr.toString();
+}
 
 var orm = {
-	//select All()
 	selectAll: function(table, callback) {
 		var query = 'SELECT * FROM ' + table + ';';
 		connection.query(query, function(err, result) {
@@ -32,27 +25,36 @@ var orm = {
 			callback(result);
 		});
 	},
-	//insertOne()
-	insertOne: function(table, column, value) {
-		var query = "INSERT INTO ?? (??) VALUES (?)"; 
+	insertOne: function(table, columns, values, cb) {
+		var query = 'INSERT INTO ' + table; 
 
+		query += '(';
+		query += columns.toString();
+		query += ') ';
+		query += 'VALUES (';
+		query += printQuestionMarks(values.length);
+		query += ')';
 
-		connection.query(query, [table, column, value], function(err, result) {
+		connection.query(query, values, function(err, result) {
 			if (err) throw err;
-			// callback(result);
+			cb(result);
 		});
 	},
-	//updateOne()
-	updateOne: function(table, column, condition, value) {
-		var query = "UPDATE ?? SET ?? = true WHERE ?? = ?";
+	updateOne: function(table, column, condition, cb) {
+		var query = "UPDATE " + table;
 
-		connection.query(query, [table, column, condition, value], function(err, result) {
+		query += ' SET ';
+		query += objToSql(column);
+		query += ' WHERE ';
+		query += condition;
+
+		console.log(query);
+
+		connection.query(query, function(err, result) {
 			if (err) throw err;
-			// callback(result);
+			cb(result);
 		});
 	},
-
-	///deleteOne()
 	deleteOne: function(table, column, value) {
 		var query = 'DELETE FROM ?? WHERE ?? = ?';
 

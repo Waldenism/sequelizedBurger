@@ -29,9 +29,9 @@ $('.destroyBtn').on('click', function(e) {
 function addBurger(burg) {
 	$.ajax({
 	  url: '/burgers/make',
-      type: "POST",
-      data: {burger_name:burg}
-    });
+    type: "POST",
+    data: {burger_name:burg}
+  });
 };
 
 function devourBurger(burg) {
