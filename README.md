@@ -17,3 +17,5 @@ npm Dependencies:
 * express-handlebars
 * mysql
 * body-parser
+* sequelize
+* mysql2
